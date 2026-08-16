@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pawan Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}
+header{background:#111827;color:white;text-align:center;padding:28px 15px}
+header h1{margin:0;color:#22c55e}
+.container{max-width:700px;margin:auto;padding:15px}
+.card{background:white;padding:20px;margin:15px 0;border-radius:16px;box-shadow:0 3px 12px #ddd}
+input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:9px;font-size:16px}
+button{background:#16a34a;color:white;border:0;padding:12px 18px;border-radius:9px;font-size:16px;margin:5px 3px 0 0}
+.result{font-size:20px;font-weight:bold;margin-top:15px}
+footer{text-align:center;padding:25px;color:#666}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>⚡ Pawan Tools</h1>
+<p>Useful Online Tools — Simple & Free</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🧮 Calculator</h2>
+<input id="n1" type="number" placeholder="पहली संख्या">
+<input id="n2" type="number" placeholder="दूसरी संख्या">
+<button onclick="add()">➕ जोड़ें</button>
+<button onclick="subtract()">➖ घटाएँ</button>
+<button onclick="multiply()">✖️ गुणा</button>
+<button onclick="divide()">➗ भाग</button>
+<div id="calcResult" class="result"></div>
+</div>
+
+<div class="card">
+<h2>📊 Percentage Calculator</h2>
+<input id="percentValue" type="number" placeholder="प्राप्त संख्या">
+<input id="percentTotal" type="number" placeholder="कुल संख्या">
+<button onclick="percentage()">Calculate</button>
+<div id="percentResult" class="result"></div>
+</div>
+
+<div class="card">
+<h2>🎂 Age Calculator</h2>
+<input id="dob" type="date">
+<button onclick="age()">Calculate Age</button>
+<div id="ageResult" class="result"></div>
+</div>
+
+<div class="card">
+<h2>📝 Word Counter</h2>
+<textarea id="text" rows="7" placeholder="यहाँ अपना text लिखें..." oninput="countWords()"></textarea>
+<div id="wordResult" class="result">Words: 0 | Characters: 0</div>
+</div>
+
+</div>
+
+<footer>
+© 2026 Pawan Tools
+</footer>
+
+<script>
+function numbers(){
+return [
+Number(document.getElementById("n1").value),
+Number(document.getElementById("n2").value)
+];
+}
+
+function add(){
+let [a,b]=numbers();
+document.getElementById("calcResult").innerText="Result: "+(a+b);
+}
+
+function subtract(){
+let [a,b]=numbers();
+document.getElementById("calcResult").innerText="Result: "+(a-b);
+}
+
+function multiply(){
+let [a,b]=numbers();
+document.getElementById("calcResult").innerText="Result: "+(a*b);
+}
+
+function divide(){
+let [a,b]=numbers();
+if(b===0){
+document.getElementById("calcResult").innerText="0 से भाग नहीं कर सकते";
+return;
+}
+document.getElementById("calcResult").innerText="Result: "+(a/b);
+}
+
+function percentage(){
+let value=Number(document.getElementById("percentValue").value);
+let total=Number(document.getElementById("percentTotal").value);
+
+if(total===0){
+document.getElementById("percentResult").innerText="कुल संख्या 0 नहीं हो सकती";
+return;
+}
+
+let result=(value/total)*100;
+document.getElementById("percentResult").innerText=
+"Percentage: "+result.toFixed(2)+"%";
+}
+
+function age(){
+let dob=new Date(document.getElementById("dob").value);
+
+if(isNaN(dob)){
+document.getElementById("ageResult").innerText="पहले जन्म तारीख चुनें";
+return;
+}
+
+let today=new Date();
+let years=today.getFullYear()-dob.getFullYear();
+
+let birthday=new Date(
+today.getFullYear(),
+dob.getMonth(),
+dob.getDate()
+);
+
+if(today<birthday) years--;
+
+document.getElementById("ageResult").innerText=
+"आपकी उम्र: "+years+" साल";
+}
+
+function countWords(){
+let text=document.getElementById("text").value.trim();
+let words=text ? text.split(/\s+/).length : 0;
+let characters=text.length;
+
+document.getElementById("wordResult").innerText=
+"Words: "+words+" | Characters: "+characters;
+}
+</script>
+
+</body>
+</html>
