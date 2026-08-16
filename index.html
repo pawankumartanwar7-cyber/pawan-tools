@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="hi">
-<link rel="manifest" href="manifest.json"> 
-<head> 
-  <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-  </script>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pawan Tools</title>
+<title>Pawan Tools - 15 Free Online Tools</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#111827}
-header{background:#111827;color:white;text-align:center;padding:28px 15px}
-header h1{margin:0;color:#22c55e}
-.container{max-width:700px;margin:auto;padding:15px}
-.card{background:white;padding:20px;margin:15px 0;border-radius:16px;box-shadow:0 3px 12px #ddd}
-input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:9px;font-size:16px}
-button{background:#16a34a;color:white;border:0;padding:12px 18px;border-radius:9px;font-size:16px;margin:5px 3px 0 0}
-.result{font-size:20px;font-weight:bold;margin-top:15px}
+body{
+margin:0;font-family:Arial,sans-serif;
+background:#f3f4f6;color:#111827
+}
+header{
+background:#111827;color:white;text-align:center;padding:28px 15px
+}
+header h1{margin:0;color:#22c55e;font-size:30px}
+.container{max-width:750px;margin:auto;padding:15px}
+.card{
+background:white;padding:20px;margin:15px 0;
+border-radius:16px;box-shadow:0 3px 12px #ddd
+}
+input,textarea,select{
+width:100%;padding:12px;margin:7px 0;
+border:1px solid #ccc;border-radius:9px;font-size:16px
+}
+button{
+background:#16a34a;color:white;border:0;padding:11px 16px;
+border-radius:9px;font-size:16px;margin:5px 3px 0 0
+}
+.result{font-size:19px;font-weight:bold;margin-top:12px}
 footer{text-align:center;padding:25px;color:#666}
 </style>
 </head>
@@ -28,41 +37,139 @@ footer{text-align:center;padding:25px;color:#666}
 
 <header>
 <h1>⚡ Pawan Tools</h1>
-<p>Useful Online Tools — Simple & Free</p>
+<p>15 Useful Online Tools — Free & Simple</p>
 </header>
 
 <div class="container">
 
+<!-- 1 Calculator -->
 <div class="card">
 <h2>🧮 Calculator</h2>
-<input id="n1" type="number" placeholder="पहली संख्या">
-<input id="n2" type="number" placeholder="दूसरी संख्या">
-<button onclick="add()">➕ जोड़ें</button>
-<button onclick="subtract()">➖ घटाएँ</button>
-<button onclick="multiply()">✖️ गुणा</button>
-<button onclick="divide()">➗ भाग</button>
-<div id="calcResult" class="result"></div>
+<input id="a" type="number" placeholder="पहली संख्या">
+<input id="b" type="number" placeholder="दूसरी संख्या">
+<button onclick="calc('+')">➕</button>
+<button onclick="calc('-')">➖</button>
+<button onclick="calc('*')">✖️</button>
+<button onclick="calc('/')">➗</button>
+<div id="calcR" class="result"></div>
 </div>
 
+<!-- 2 Percentage -->
 <div class="card">
 <h2>📊 Percentage Calculator</h2>
-<input id="percentValue" type="number" placeholder="प्राप्त संख्या">
-<input id="percentTotal" type="number" placeholder="कुल संख्या">
+<input id="pv" type="number" placeholder="प्राप्त संख्या">
+<input id="pt" type="number" placeholder="कुल संख्या">
 <button onclick="percentage()">Calculate</button>
-<div id="percentResult" class="result"></div>
+<div id="pr" class="result"></div>
 </div>
 
+<!-- 3 Age -->
 <div class="card">
 <h2>🎂 Age Calculator</h2>
 <input id="dob" type="date">
 <button onclick="age()">Calculate Age</button>
-<div id="ageResult" class="result"></div>
+<div id="ar" class="result"></div>
 </div>
 
+<!-- 4 Word Counter -->
 <div class="card">
-<h2>📝 Word Counter</h2>
-<textarea id="text" rows="7" placeholder="यहाँ अपना text लिखें..." oninput="countWords()"></textarea>
-<div id="wordResult" class="result">Words: 0 | Characters: 0</div>
+<h2>📝 Word & Character Counter</h2>
+<textarea id="txt" rows="6" placeholder="अपना text लिखें..." oninput="words()"></textarea>
+<div id="wr" class="result">Words: 0 | Characters: 0</div>
+</div>
+
+<!-- 5 EMI -->
+<div class="card">
+<h2>💰 EMI Calculator</h2>
+<input id="loan" type="number" placeholder="Loan Amount">
+<input id="rate" type="number" step="0.01" placeholder="Annual Interest %">
+<input id="months" type="number" placeholder="Months">
+<button onclick="emi()">Calculate EMI</button>
+<div id="er" class="result"></div>
+</div>
+
+<!-- 6 Date Difference -->
+<div class="card">
+<h2>📅 Date Difference</h2>
+<input id="d1" type="date">
+<input id="d2" type="date">
+<button onclick="dateDiff()">Calculate Days</button>
+<div id="dr" class="result"></div>
+</div>
+
+<!-- 7 BMI -->
+<div class="card">
+<h2>⚖️ BMI Calculator</h2>
+<input id="weight" type="number" placeholder="Weight (kg)">
+<input id="height" type="number" placeholder="Height (cm)">
+<button onclick="bmi()">Calculate BMI</button>
+<div id="br" class="result"></div>
+</div>
+
+<!-- 8 Unit Converter -->
+<div class="card">
+<h2>📏 Kilometre → Metre</h2>
+<input id="km" type="number" placeholder="Kilometres">
+<button onclick="convert()">Convert</button>
+<div id="ur" class="result"></div>
+</div>
+
+<!-- 9 Currency -->
+<div class="card">
+<h2>💵 Rupee → Dollar</h2>
+<input id="rupee" type="number" placeholder="Amount in ₹">
+<p>Example rate: ₹83 = $1</p>
+<button onclick="currency()">Convert</button>
+<div id="cr" class="result"></div>
+</div>
+
+<!-- 10 Password Generator -->
+<div class="card">
+<h2>🔐 Password Generator</h2>
+<button onclick="password()">Generate Password</button>
+<div id="pass" class="result"></div>
+</div>
+
+<!-- 11 Text Case -->
+<div class="card">
+<h2>🔤 Text Case Converter</h2>
+<textarea id="caseText" rows="4" placeholder="Text लिखें"></textarea>
+<button onclick="upper()">UPPERCASE</button>
+<button onclick="lower()">lowercase</button>
+<div id="caser" class="result"></div>
+</div>
+
+<!-- 12 GST -->
+<div class="card">
+<h2>🧾 GST Calculator</h2>
+<input id="gstAmount" type="number" placeholder="Amount">
+<input id="gstRate" type="number" placeholder="GST %">
+<button onclick="gst()">Calculate</button>
+<div id="gstr" class="result"></div>
+</div>
+
+<!-- 13 Time -->
+<div class="card">
+<h2>⏰ Time Calculator</h2>
+<input id="hours" type="number" placeholder="Hours">
+<input id="minutes" type="number" placeholder="Minutes">
+<button onclick="timeCalc()">Convert to Minutes</button>
+<div id="timer" class="result"></div>
+</div>
+
+<!-- 14 Character Counter -->
+<div class="card">
+<h2>🔢 Character Counter</h2>
+<textarea id="charText" rows="5" placeholder="Text लिखें..." oninput="chars()"></textarea>
+<div id="charr" class="result">Characters: 0</div>
+</div>
+
+<!-- 15 Square Root -->
+<div class="card">
+<h2>√ Square Root Calculator</h2>
+<input id="sqrt" type="number" placeholder="Number">
+<button onclick="root()">Calculate</button>
+<div id="sqr" class="result"></div>
 </div>
 
 </div>
@@ -72,82 +179,101 @@ footer{text-align:center;padding:25px;color:#666}
 </footer>
 
 <script>
-function numbers(){
-return [
-Number(document.getElementById("n1").value),
-Number(document.getElementById("n2").value)
-];
-}
 
-function add(){
-let [a,b]=numbers();
-document.getElementById("calcResult").innerText="Result: "+(a+b);
-}
-
-function subtract(){
-let [a,b]=numbers();
-document.getElementById("calcResult").innerText="Result: "+(a-b);
-}
-
-function multiply(){
-let [a,b]=numbers();
-document.getElementById("calcResult").innerText="Result: "+(a*b);
-}
-
-function divide(){
-let [a,b]=numbers();
-if(b===0){
-document.getElementById("calcResult").innerText="0 से भाग नहीं कर सकते";
-return;
-}
-document.getElementById("calcResult").innerText="Result: "+(a/b);
+function calc(op){
+let a=Number(document.getElementById("a").value);
+let b=Number(document.getElementById("b").value);
+let r;
+if(op==="+")r=a+b;
+if(op==="-")r=a-b;
+if(op==="*")r=a*b;
+if(op==="/")r=b===0?"Cannot divide by zero":a/b;
+document.getElementById("calcR").innerText="Result: "+r;
 }
 
 function percentage(){
-let value=Number(document.getElementById("percentValue").value);
-let total=Number(document.getElementById("percentTotal").value);
-
-if(total===0){
-document.getElementById("percentResult").innerText="कुल संख्या 0 नहीं हो सकती";
-return;
-}
-
-let result=(value/total)*100;
-document.getElementById("percentResult").innerText=
-"Percentage: "+result.toFixed(2)+"%";
+let v=Number(pv.value),t=Number(pt.value);
+pr.innerText=t?"Percentage: "+((v/t)*100).toFixed(2)+"%":"Enter valid values";
 }
 
 function age(){
-let dob=new Date(document.getElementById("dob").value);
-
-if(isNaN(dob)){
-document.getElementById("ageResult").innerText="पहले जन्म तारीख चुनें";
-return;
+let d=new Date(dob.value),n=new Date();
+if(isNaN(d))return ar.innerText="Select date";
+let y=n.getFullYear()-d.getFullYear();
+let bd=new Date(n.getFullYear(),d.getMonth(),d.getDate());
+if(n<bd)y--;
+ar.innerText="Age: "+y+" years";
 }
 
-let today=new Date();
-let years=today.getFullYear()-dob.getFullYear();
-
-let birthday=new Date(
-today.getFullYear(),
-dob.getMonth(),
-dob.getDate()
-);
-
-if(today<birthday) years--;
-
-document.getElementById("ageResult").innerText=
-"आपकी उम्र: "+years+" साल";
+function words(){
+let t=txt.value.trim();
+wr.innerText="Words: "+(t?t.split(/\s+/).length:0)+" | Characters: "+t.length;
 }
 
-function countWords(){
-let text=document.getElementById("text").value.trim();
-let words=text ? text.split(/\s+/).length : 0;
-let characters=text.length;
-
-document.getElementById("wordResult").innerText=
-"Words: "+words+" | Characters: "+characters;
+function emi(){
+let P=+loan.value,R=+rate.value/12/100,N=+months.value;
+if(!P||!N)return er.innerText="Enter valid values";
+let e=R?P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1):P/N;
+er.innerText="Monthly EMI: ₹"+e.toFixed(2);
 }
+
+function dateDiff(){
+let a=new Date(d1.value),b=new Date(d2.value);
+if(isNaN(a)||isNaN(b))return dr.innerText="Select both dates";
+dr.innerText="Difference: "+Math.abs(Math.round((b-a)/86400000))+" days";
+}
+
+function bmi(){
+let w=+weight.value,h=+height.value/100;
+if(!w||!h)return br.innerText="Enter valid values";
+br.innerText="BMI: "+(w/(h*h)).toFixed(2);
+}
+
+function convert(){
+let k=+km.value;
+ur.innerText="Metres: "+(k*1000);
+}
+
+function currency(){
+let r=+rupee.value;
+cr.innerText="Approx. USD: $"+(r/83).toFixed(2);
+}
+
+function password(){
+let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+let p="";
+for(let i=0;i<12;i++)p+=chars[Math.floor(Math.random()*chars.length)];
+pass.innerText=p;
+}
+
+function upper(){
+caser.innerText=caseText.value.toUpperCase();
+}
+
+function lower(){
+caser.innerText=caseText.value.toLowerCase();
+}
+
+function gst(){
+let a=+gstAmount.value,g=+gstRate.value;
+let tax=a*g/100;
+gstr.innerText="GST: ₹"+tax.toFixed(2)+" | Total: ₹"+(a+tax).toFixed(2);
+}
+
+function timeCalc(){
+let h=+hours.value,m=+minutes.value;
+timer.innerText="Total Minutes: "+(h*60+m);
+}
+
+function chars(){
+charr.innerText="Characters: "+charText.value.length;
+}
+
+function root(){
+let n=+sqrt.value;
+sqr.innerText=n>=0?"√"+n+" = "+Math.sqrt(n).toFixed(4):"Enter positive number";
+}
+
 </script>
 
 </body>
