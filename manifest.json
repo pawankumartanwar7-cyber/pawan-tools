@@ -1,0 +1,10 @@
+{
+  "name": "Pawan Tools",
+  "short_name": "Pawan Tools",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#16a34a",
+  "description": "Useful online tools by Pawan",
+  "icons": []
+}
